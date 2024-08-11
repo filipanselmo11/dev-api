@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export class DeveloperRepository implements IDeveloperRepository {
     public async createDeveloper(name: string, email: string, technologies: string): Promise<{ id: number; name: string; email: string; technologies: string; createdAt: Date; }> {
-        const developer = prisma.developer.create({
+        const developer = await prisma.developer.create({
             data: {
                 name,
                 email,
@@ -16,7 +16,7 @@ export class DeveloperRepository implements IDeveloperRepository {
     }
 
     public async listDevelopers(): Promise<{ id: number; name: string; email: string; technologies: string; createdAt: Date; }[]> {
-        const developers = prisma.developer.findMany();
+        const developers = await prisma.developer.findMany();
         return developers;
     }
 }
