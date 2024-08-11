@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: dev_api_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER:-admin}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-password}"
+      POSTGRES_DB: "${POSTGRES_DB:-dev_db}"
+      POSTGRES_HOST: "${POSTGRES_HOST:-localhost}"
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
+    driver: local
