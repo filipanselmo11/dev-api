@@ -1,0 +1,8 @@
+services:
+  web:
+    container_name: dev_api
+    build: .
+    environment:
+      - ./.env
+    ports:
+      - "3000:3000"
